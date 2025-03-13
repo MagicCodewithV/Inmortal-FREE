@@ -10,7 +10,7 @@ local function showNotification(text, duration)
     })
 end
 
-showNotification("ESP IS WORKING? inmortal.wtf solutions", 15)
+showNotification("ESP IS WORKING", 3)
 
 task.wait(3)
 
@@ -23,9 +23,10 @@ local function sendPrivateChatMessage(text, color)
     })
 end
 
+sendPrivateChatMessage("Esp simple by 1aqua & inmortal.wtf dont be skid and say it yours pls :)", Color3.fromRGB(255, 0, 0))
+
 local function applyESP(player)
     if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-
         if player.Character:FindFirstChild("ESP_Highlight") then
             player.Character.ESP_Highlight:Destroy()
         end
@@ -70,3 +71,29 @@ task.spawn(function()
         task.wait(3)
     end
 end)
+
+local function createRGBText()
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Parent = game:GetService("CoreGui")
+    ScreenGui.Name = "INMORTAL_UI"
+
+    local TextLabel = Instance.new("TextLabel")
+    TextLabel.Parent = ScreenGui
+    TextLabel.Size = UDim2.new(0, 200, 0, 50)
+    TextLabel.Position = UDim2.new(0.75, -100, 0.1, 0)
+    TextLabel.BackgroundTransparency = 1
+    TextLabel.TextScaled = true
+    TextLabel.Font = Enum.Font.GothamBlack
+    TextLabel.Text = "INMORTAL.WTF"
+
+    local hue = 0
+    task.spawn(function()
+        while true do
+            hue = (hue + 3) % 360
+            TextLabel.TextColor3 = Color3.fromHSV(hue / 360, 1, 1)
+            task.wait(0.1)
+        end
+    end)
+end
+
+createRGBText()
